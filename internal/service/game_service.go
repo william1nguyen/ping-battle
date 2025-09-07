@@ -22,7 +22,7 @@ type LeaderBoardEntry struct {
 
 func CreateSession(username string) *model.User {
 	sessionID := uuid.New().String()
-	key := fmt.Sprintf("session: %s", sessionID)
+	key := fmt.Sprintf("session:%s", sessionID)
 	redis.Rdb.Set(key, username, time.Duration(config.Cfg.SessionTTL)*time.Second)
 	return &model.User{
 		Username:  username,
