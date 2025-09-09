@@ -1,0 +1,23 @@
+{
+  "go.useLanguageServer": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--fast"
+  ],
+  "go.formatTool": "goimports",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "go.testFlags": [
+    "-v"
+  ],
+  "go.coverOnSave": true,
+  "go.coverageDecorator": {
+    "type": "highlight"
+  },
+  "files.eol": "\n",
+  "editor.rulers": [100],
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4
+}

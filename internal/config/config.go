@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 
@@ -14,13 +15,17 @@ type Config struct {
 
 var Cfg Config
 
-func LoadConfig() {
-	godotenv.Load()
+func LoadConfig() error {
+	if err := godotenv.Load(); err != nil {
+		return fmt.Errorf("failed to run server: %v", err)
+	}
 
 	Cfg = Config{
 		RedisAddr:  getEnv("REDIS_ADDR", "localhost:6379"),
 		SessionTTL: coerceInt("SESSION_TTL", 360),
 	}
+
+	return nil
 }
 
 func getEnv(key, fallback string) string {

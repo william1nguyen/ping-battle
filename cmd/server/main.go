@@ -10,7 +10,9 @@ import (
 )
 
 func main() {
-	config.LoadConfig()
+	if err := config.LoadConfig(); err != nil {
+		panic(err.Error())
+	}
 
 	if err := redis.Init(); err != nil {
 		log.Fatalf("failed to init redis: %v", err)
@@ -19,5 +21,7 @@ func main() {
 	r := gin.Default()
 	api.RegisterGameRoutes(r)
 
-	r.Run()
+	if err := r.Run(); err != nil {
+		log.Fatalf("failed to run server: %v", err)
+	}
 }

@@ -1,0 +1,40 @@
+run:
+  timeout: 5m
+  tests: true
+
+linters:
+  enable:
+    - govet
+    - errcheck
+    - staticcheck
+    - gosimple
+    - ineffassign
+    - gofmt
+    - goimports
+    - revive
+    - misspell
+    - unused
+    - prealloc
+    - gocyclo
+    - goconst
+  disable:
+    - lll
+    - godox
+
+linters-settings:
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: github.com/william1nguyen/ping-battle
+  revive:
+    rules:
+      - name: exported
+        severity: warning
+        disabled: false
+      - name: var-naming
+        disabled: true
+
+issues:
+  exclude-use-default: false
+  max-same-issues: 3
+  max-issues-per-linter: 0

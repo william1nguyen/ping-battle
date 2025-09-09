@@ -30,3 +30,11 @@ dev-up:
 .PHONY: dev-down
 dev-down:
 	docker-compose -f $(DOCKER_COMPOSE_PATH) -p $(DEV_ENV_NAME) down
+
+.PHONY: lint
+lint:
+	golangci-lint run ./...
+
+.PHONY: format
+format:
+	golangci-lint fmt
